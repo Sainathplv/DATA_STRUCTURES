@@ -1,9 +1,12 @@
+# initialization of a node where every node has value and pointer
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
 
 
+# Class of linked_list for various operations which use node function for creating a node.
+# where head and tail are first value and last value of a sequence
 class LinkedList:
     def __init__(self, value):
         new_node = Node(value)
@@ -17,6 +20,8 @@ class LinkedList:
             print(temp.value)
             temp = temp.next
 
+    # append function is to add a node in the end of a sequence,
+    # where for that we need to alter the tail's pointer to the new node
     def append(self, value):
         new_node = Node(value)
         if self.length == 0:
@@ -27,6 +32,7 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
 
+    # pop is to delete the node and end of a sequence so alter the tail's but one node pointer to none
     def pop(self):
         if self.length == 0:
             return None
@@ -107,6 +113,9 @@ class LinkedList:
         self.length -= 1
         return b
 
+    # here there is a logic where temp will be head,head becomes tail and tail becomes head
+    # traverse along the loop until max length where first after is temp.next and then to none
+    # then switching the variables to connect the link
     def rev(self):
         temp = self.head
         self.head = self.tail
@@ -119,6 +128,8 @@ class LinkedList:
             before = temp
             temp = after
 
+    # here one variable has to jump twice and one var moves one step
+    # second approach: n+1/2 or n/2 can also take pace but require other function to calculate the length
     def find_middle_node(self):
         slow = self.head
         fast = self.head
